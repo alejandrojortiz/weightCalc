@@ -15,7 +15,6 @@ export default function Home() {
   const [resultText, setResultText] = useState("");
   const [targetWeight, setTargetWeight] = useState(0);
   const [barWeight, setBarWeight] = useState(0);
-  const [options, SetOption] = useState(0);
   const [chosenLayout, setChosenLayout] = useState("");
   const [savedLayouts, setSavedLayouts] = useState(() => {
     let ret = [];
