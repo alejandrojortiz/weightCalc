@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint"
   },
-  "homepage": "https://alejandrojortiz.github.io/weightcalc",
+  "homepage": "https://alejandrojortiz.github.io/weightcalc/",
   "dependencies": {
     "@next/font": "13.1.6",
     "@react-three/drei": "^9.56.4",
