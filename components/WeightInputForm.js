@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 
 export function WeightInputForm(props) {
