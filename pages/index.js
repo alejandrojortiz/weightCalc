@@ -74,7 +74,7 @@ export default function Home() {
       return;
     }
     if (isNaN(targetWeight) || isNaN(barWeight)) {
-      toast("Only numeric input allowed! HI", {
+      toast("Only numeric input allowed!", {
         type: "error",
         theme: "colored",
         autoClose: 3000,
@@ -83,7 +83,7 @@ export default function Home() {
     }
     for (let weightOption of weightOptions) {
       if (isNaN(weightOption.weight) || isNaN(weightOption.amount)) {
-        toast("Only numeric input allowed! BYE", {
+        toast("Only numeric input allowed!", {
           type: "error",
           theme: "colored",
           autoClose: 3000,
@@ -155,7 +155,7 @@ export default function Home() {
       .then(() => {
         if (name) {
           addSavedLayout(name);
-          console.log(`Successfully stored ${name} with id: ${id}`);
+          // console.log(`Successfully stored ${name} with id: ${id}`);
         }
       })
       .catch((error) => {
@@ -171,27 +171,27 @@ export default function Home() {
         if (error.name === "ConstraintError") {
           // modify existing layout
           modifyLayout()
-            .then(console.log(`Modified ${name}`))
-            .catch((error) =>
+            .then(/* console.log(`Modified ${name}`) */)
+            .catch(/*(error) =>
               console.log(`Failed to modify ${name} with error: ${error}`)
-            );
-        } else console.log(`Failed to add ${name} with error: ${error}`);
+            */);
+        } //else console.log(`Failed to add ${name} with error: ${error}`);
       });
   };
   // Handles changes in the weight inputs
   const handleInputChange = (index, name, value) => {
     let temp = [...weights];
     temp[index][name] = value;
-    console.log("HERE:", name, value);
+    // console.log("HERE:", name, value);
     setWeights(temp);
   };
   // Adds a weight input field
   const addWeight = () => {
     let newWeight = { weight: "", amount: "" };
-    console.log("WEIGHTS:", weights);
+    // console.log("WEIGHTS:", weights);
     setWeights([...weights, newWeight]);
-    console.log("WEIGHTS AFTER: ", weights);
-    console.log("BYE");
+    // console.log("WEIGHTS AFTER: ", weights);
+    // console.log("BYE");
   };
   // Removes the index-th weight input field
   const removeWeight = (index) => {
@@ -210,16 +210,10 @@ export default function Home() {
       setResultText(lay[0].resultText);
       setVisualizerWeights(lay[0].visualizerWeights);
     }
-    load().catch((error) => {
+    load().catch(/*(error) => {
       console.log(`Unable to load: ${error}`);
-    });
+    }*/);
   };
-  // // Handles adding a new saved layout option
-  // const addSavedLayout = (name) => {
-  //   let newVersion = [...savedLayouts, String(name)].sort();
-  //   setSavedLayouts(newVersion);
-  //   setChosenSavedLayout(name);
-  // };
   // Deletes the selected saved layout
   const deleteSavedLayout = () => {
     async function deleteLayout() {
@@ -236,9 +230,9 @@ export default function Home() {
           setChosenLayout("");
         }
       })
-      .catch((error) => {
+      .catch(/* (error) => {
         console.log(`Failed to delete: ${error}`);
-      });
+      }*/);
   };
   const saveLayoutClick = () => {
     saveCurrentLayout(weights);
