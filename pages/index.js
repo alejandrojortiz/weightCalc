@@ -51,12 +51,14 @@ export default function Home() {
     return ret;
   });
   // ------------------- HELPER FUNCTIONS -----------------------
+
+  // Compares two weights, B - A for descending order
+  const compareWeights = (inputA, inputB) => {
+    return Number(inputB.weight) - Number(inputA.weight);
+  };
   // Triggered by click on "Calculate button"
   // Takes in parameters and calculates result, updating state as necessary
   function calculateWeights(weightOptions, targetWeight, barWeight) {
-    const weights = weightOptions.map((input) => {
-      return { weight: input.weight * 100, amount: input.amount };
-    });
     if (targetWeight < 0) {
       toast("Target weight must be positive!", {
         type: "error",
@@ -104,6 +106,10 @@ export default function Home() {
       setVisualizerWeights([]);
       return;
     }
+    weightOptions.sort(compareWeights);
+    const weights = weightOptions.map((input) => {
+      return { weight: input.weight * 100, amount: input.amount };
+    });
     const result = getWeights(weights, (targetWeight - barWeight) * 100);
     if (!result) {
       setResultText("Can't make this weight");
